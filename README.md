@@ -22,7 +22,7 @@ Docker-based initialization for:
 
 ## API Testing
 
-A [Postman-compatible JSON collection](https://raw.githubusercontent.com/vukkt/MQTTOrchestrator/main/MQTTOrchestrator.postman_collection.json) is included in the root of the repo for testing REST endpoints.
+A [Postman-compatible JSON collection](https://raw.githubusercontent.com/vukkt/MQTTOrchestrator/main/MQTT.postman_collection.json) is included in the root of the repo for testing REST endpoints.
 
 ## Quick Start
 
