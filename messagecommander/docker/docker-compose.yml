@@ -1,0 +1,53 @@
+services:
+  mosquitto-broker:
+    platform: linux/amd64
+    image: eclipse-mosquitto:2.0.15
+    hostname: mosquitto-broker        # DNS name other containers will use
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - ../../mqtt-rbac-docker-init/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mqtt-dynsec:/mosquitto/config
+    networks: [proxy-network]
+
+  mqtt-init:
+    platform: linux/amd64
+    image: eclipse-mosquitto:2.0.15
+    env_file:
+      - ../../mqtt-rbac-docker-init/mosquitto.env
+    command: ["/dynsec-setup.sh"]
+    volumes:
+      - ../../mqtt-rbac-docker-init/scripts/dynsec-setup.sh:/dynsec-setup.sh
+      - mqtt-dynsec:/mosquitto/config
+    depends_on:
+      mosquitto-broker:
+        condition: service_started
+    networks: [proxy-network]
+
+  mqtt-mgmt:
+    platform: linux/amd64
+    image: cedalo/management-center:2.3.4
+    ports:
+      - "8088:8088"
+    env_file:
+      - ../../mqtt-rbac-docker-init/cedalo.env
+    networks: [proxy-network]
+
+  message-commander:
+    platform: linux/amd64
+    build:
+      context: ../../
+      dockerfile: messagecommander/Dockerfile
+    ports:
+      - "15876:15876"
+    depends_on:
+      mosquitto-broker:
+        condition: service_started
+    networks: [proxy-network]
+
+networks:
+  proxy-network: {}
+
+volumes:
+  mqtt-dynsec: {}

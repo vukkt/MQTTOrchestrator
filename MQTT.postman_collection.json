@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "a1b66ee6-fd8e-4b02-bfcc-3451440eee41",
+		"name": "MQTT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "19681202"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"vuk\",\r\n  \"password\": \"123\",\r\n  \"clientid\": \"vuk1\",\r\n  \"textname\": \"vuk1\",\r\n  \"textdescription\": \"vuk desc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/create-user"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"vuk1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/delete-user"
+			},
+			"response": []
+		},
+		{
+			"name": "Crete Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"rolename\": \"testrole\",\r\n    \"textname\": \"testrole\",\r\n    \"textdescription\": \"testrole desc\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/create-role"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/delete-role"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Client Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"vuk1\",\r\n  \"rolename\": \"testrole\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/add-client-role"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Client Role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"vuk1\",\r\n  \"rolename\": \"testrole\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/remove-client-role"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Receive Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"receive66a674e1-0c45-4245-9b46-00ae5c65b6d5\",\r\n  \"acltype\": \"publishClientReceive\",\r\n  \"topic\":\"testtopic\",\r\n  \"allow\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://resonance-server.eurodyn.com:15876/api/message/client-acl-receive"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Send Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\",\r\n  \"acltype\": \"publishClientSend\",\r\n  \"topic\": \"testtopic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/client-acl-send"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Subscribe Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\",\r\n  \"acltype\": \"subscribeLiteral\",\r\n  \"topic\": \"testtopic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/client-acl-subscribe"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Subscribe Client pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\",\r\n  \"acltype\": \"subscribePattern\",\r\n  \"topic\": \"testtopic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/client-acl-subscribe-pattern"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Unsubscribe Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\",\r\n  \"acltype\": \"unsubscribeLiteral\",\r\n  \"topic\": \"testtopic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/client-acl-unsubscribe-pattern"
+			},
+			"response": []
+		},
+		{
+			"name": "Add ACL Unsubscribe Client Pattern",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rolename\": \"testrole\",\r\n  \"acltype\": \"unsubscribePattern\",\r\n  \"topic\": \"testtopic\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/client-acl-unsubscribe-pattern"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"groupname\": \"testgroup\",\r\n  \"textname\": \"testgroup\",\r\n  \"textdescription\": \"testgroup desc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/create-group"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"groupname\": \"testgroup\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/delete-group"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Group Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"vuk1\",\r\n    \"groupname\":\"testgroup\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/add-client-to-group"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Client From Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"vuk2\",\r\n    \"groupname\": \"testgroup\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/remove-client-to-group"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Role To Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"groupname\": \"testgroup\",\r\n    \"rolename\":\"testrole\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/add-role-to-group"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Role From Group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"groupname\": \"testgroup\",\r\n    \"rolename\":\"testrole\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:15876/api/message/remove-role-from-group"
+			},
+			"response": []
+		}
+	]
+}
